@@ -4,7 +4,7 @@ import { rebind } from 'd3fc-rebind';
 import { timeDay, timeYear } from 'd3-time';
 import { functor } from './fn';
 
-export default function() {
+export default function( geobm ) {
     let startDate = new Date();
     let startPrice = 100;
     let interval = timeDay;
@@ -16,7 +16,7 @@ export default function() {
         const normal = randomNormal(1, 0.1);
         return Math.ceil(normal() * 1000);
     };
-    const gbm = geometricBrownianMotion();
+    const gbm = geobm || geometricBrownianMotion();
 
     const getOffsetPeriod = date => {
         const unitMilliseconds = unitInterval.offset(date, unitIntervalStep) - date;
